@@ -20,7 +20,7 @@
     "@snowplow/browser-plugin-form-tracking": "^4.6.2",
     "@snowplow/browser-plugin-link-click-tracking": "^4.6.2",
     "@snowplow/browser-tracker": "^4.6.2",
-    "@snowplow/signals-node": "^0.0.4",
+    "@snowplow/signals-node": "^0.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.363.0",

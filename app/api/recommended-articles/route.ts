@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
   const spUserId = spCookie.split(".")[0] || "anonymous"
 
   const attributes = await signals.getOnlineAttributes({
-    entities: { user: [spUserId] },
+    entities: { domain_userid: [spUserId] },
     service: "media_demo_service",
   });
 

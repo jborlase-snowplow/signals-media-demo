@@ -16,6 +16,7 @@ const signals = new Signals({
   
 
 export async function GET(request: NextRequest) {
+    console.log("🔍 Fetching read articles...");
     // Get the user ID from the cookies
     const cookieStore = cookies()
     const spCookie = cookieStore.get("_sp_id.1fff")?.value || "anonymous"
@@ -23,7 +24,7 @@ export async function GET(request: NextRequest) {
     const spUserId = spCookie.split(".")[0] || "anonymous"
 
     const attributes = await signals.getOnlineAttributes({
-        entities: { user: [spUserId] },
+        entities: { domain_userid: [spUserId] },
         service: "media_demo_service",
     });
 
