@@ -7,8 +7,8 @@ import { newTracker, trackPageView, trackSelfDescribingEvent } from '@snowplow/b
 const createTracker = () => {
   console.log("🔍 Initializing Snowplow tracker")
 
-  newTracker('sp1', 'https://collector-sales-aws.snowplowanalytics.com', {
-    appId: 'website',
+  newTracker('sp1', process.env.NEXT_PUBLIC_SNOWPLOW_COLLECTOR_URL || '', {
+    appId: process.env.NEXT_PUBLIC_SNOWPLOW_APP_ID || 'website',
     platform: 'web',
     contexts: {
       webPage: true

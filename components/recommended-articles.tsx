@@ -134,7 +134,11 @@ export default function RecommendedArticles() {
         {metadata && (
           <div className="mt-4 text-xs text-muted-foreground">
             <p>Powered by {metadata.source}</p>
-            <p>Based on interests: {metadata.interestsUsed.join(", ")}</p>
+            {metadata.interestsUsed.length > 0 ? (
+              <p>Based on interests: {metadata.interestsUsed.join(", ")}</p>
+            ) : (
+              <p>No current recommendation attributes</p>
+            )}
           </div>
         )}
       </div>
