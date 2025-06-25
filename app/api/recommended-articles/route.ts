@@ -17,10 +17,11 @@ export async function GET(request: NextRequest) {
   const cookieStore = cookies()
   const spCookie = cookieStore.get("_sp_id.1fff")?.value || "anonymous"
 
-  const spUserId = spCookie.split(".")[0] || "anonymous"
+  const spDomainUserId = spCookie.split(".")[0] || "anonymous"
+  const spDomainSessionId = spCookie.split(".")[5] || "anonymous"
 
   const attributes = await signals.getOnlineAttributes({
-    entities: { domain_userid: [spUserId] },
+    entities: { domain_userid: [spDomainUserId] },
     service: "media_demo_service",
   });
 
@@ -88,7 +89,7 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({
     recommendations: recommendedArticles,
     metadata: {
-      userId: spUserId,
+      userId: spDomainUserId,
       timestamp: new Date().toISOString(),
       interestsUsed: interests,
       source: "Snowplow Signals Streaming Attributes",
